@@ -1,0 +1,12 @@
+{
+    "Image":{
+        "Name": "image-name"
+    },
+    "Ports":[
+        {
+            "ContainerPort":8008,
+            "HostPort":8008
+        }        
+    ]
+
+}
