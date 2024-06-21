@@ -29,3 +29,16 @@ resource "aws_elastic_beanstalk_environment" "ambiente_beanstalk" {
 
 }
 
+resource "aws_elastic_beanstalk_application_version" "default" {
+  depends_on = [
+    aws_elastic_beanstalk_environment.ambiente_beanstalk,
+    aws_elastic_beanstalk_application.aplicacao_beanstalk,
+    aws_s3_bucket_object.docker
+  ]
+
+  name        = var.ambiente
+  application = var.nome
+  description = var.descricao
+  bucket      = aaws_s3_bucket.beanstalk_deploys.id
+  key         = docker.id
+}
